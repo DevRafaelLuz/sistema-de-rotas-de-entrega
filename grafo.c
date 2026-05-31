@@ -7,8 +7,33 @@ struct grafo {
     int** matrizAdjacencia;
 };
 
-// TODO: Implementar as funções declaradas em grafo.h
-// Grafo* criarGrafo(int numeroVertices) { }
+
+Grafo* criarGrafo(int numeroVertices){
+
+    Grafo* grafo = (Grafo*)malloc(sizeof(Grafo));
+    grafo->numeroVertices = numeroVertices;
+ 
+    //Aloca linhas da matriz
+    grafo->matrizAdjacencia = (int**)malloc(numeroVertices * sizeof(int*));
+ 
+    //Aloca cada coluna e inicia com 0
+    for (int i = 0; i < numeroVertices; i++) {
+        grafo->matrizAdjacencia[i] = (int*)calloc(numeroVertices, sizeof(int));
+    }
+ 
+    return grafo;
+}
+
+void liberarGrafo(Grafo* grafo) {
+    for (int i = 0; i < grafo->numeroVertices; i++) {
+        free(grafo->matrizAdjacencia[i]);
+    }
+    free(grafo->matrizAdjacencia);
+    free(grafo);
+}
+
+// TODO: Implementar o resto das funções declaradas em grafo.h
+
 // void cadastrarRotaEntreLocais(Grafo* grafo, int origem, int destino) { }
 // void exibirRedeDistribuicao(Grafo* grafo) { }
 // void simularEntregaBFS(Grafo* grafo, int origem, int destino) { }

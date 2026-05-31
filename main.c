@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "grafo.h"
 
-#define MAX_VERTICES 5 // Define o número máximo de vértices no grafo. OBS: valor temporário para testes, pode ser alterado posteriormente.
+#define MAX_VERTICES 5 // Valor temporário para testes.
 
-// Função para exibir o menu de opções para o usuário
-void exibirMenu() {
+
+// Função para exibir o menu
+void exibirMenu(Grafo* grafo) {
     int opcao;
-
     do {
         printf("+-----------------------------------+\n");
         printf("|    Sistema de Rotas de Entrega    |\n");
@@ -45,7 +45,10 @@ void exibirMenu() {
 }
 
 int main() {
-    exibirMenu(); // Chama a função para exibir o menu de opções para o usuário
+    Grafo* grafo = criarGrafo(MAX_VERTICES);
+    exibirMenu(grafo); //Chama a função para exibir o menu
+
+    liberarGrafo(grafo);
 
     return 0;
 }
