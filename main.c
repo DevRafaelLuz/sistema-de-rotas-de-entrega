@@ -23,7 +23,18 @@ void exibirMenu(Grafo* grafo) {
 
         switch (opcao) {
             case 1:
-                // cadastrarRotaEntreLocais(grafo, origem, destino);
+                int origem, destino, peso;
+
+                printf("\nDigite o ponto de origem");
+                scanf("%d", &origem);
+
+                printf("\nDigite o destino");
+                scanf("%d", &destino);
+
+                printf("\nDigite a distancia(Km): ");
+                scanf("%d", &peso);
+
+                cadastrarRotaEntreLocais(grafo, origem, destino, peso);
                 break;
             case 2:
                 // exibirRedeDistribuicao(grafo);
@@ -41,7 +52,7 @@ void exibirMenu(Grafo* grafo) {
                 printf("Opcao invalida. Tente novamente.\n");
                 break;
         }
-    } while (opcao < 1 || opcao > 5);
+    } while (opcao != 5);
 }
 
 int main() {

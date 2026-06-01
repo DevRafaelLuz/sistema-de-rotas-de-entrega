@@ -32,9 +32,19 @@ void liberarGrafo(Grafo* grafo) {
     free(grafo);
 }
 
-// TODO: Implementar o resto das funções declaradas em grafo.h
+void cadastrarRotaEntreLocais(Grafo* grafo, int origem, int destino, int peso){
+    if (origem < 0 || origem >= grafo->numeroVertices || destino < 0 || destino >= grafo->numeroVertices){
+        printf("Local invalido.\n");
+        return;
+    }
+ 
+    grafo->matrizAdjacencia[origem][destino] = peso;
+    grafo->matrizAdjacencia[destino][origem] = peso;    
+ 
+    printf("Rota cadastrada: %d <-> %d (peso: %d)\n", origem, destino, peso);
+}
 
-// void cadastrarRotaEntreLocais(Grafo* grafo, int origem, int destino) { }
+// TODO: Implementar o resto das funções declaradas em grafo.h
 // void exibirRedeDistribuicao(Grafo* grafo) { }
 // void simularEntregaBFS(Grafo* grafo, int origem, int destino) { }
 // void calcularMenorRotaDijkstra(Grafo* grafo, int origem, int destino) { }
