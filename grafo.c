@@ -8,7 +8,7 @@ struct grafo {
     int** matrizAdjacencia;
 };
 
-
+// Função para criar um grafo com um número específico de vértices
 Grafo* criarGrafo(int numeroVertices){
 
     Grafo* grafo = (Grafo*)malloc(sizeof(Grafo));
@@ -25,6 +25,7 @@ Grafo* criarGrafo(int numeroVertices){
     return grafo;
 }
 
+// Função para liberar a memória alocada para o grafo
 void liberarGrafo(Grafo* grafo) {
     for (int i = 0; i < grafo->numeroVertices; i++) {
         free(grafo->matrizAdjacencia[i]);
@@ -33,6 +34,7 @@ void liberarGrafo(Grafo* grafo) {
     free(grafo);
 }
 
+// Função para cadastrar uma rota entre dois locais
 void cadastrarRotaEntreLocais(Grafo* grafo, int origem, int destino, int peso){
     if (origem < 0 || origem >= grafo->numeroVertices || destino < 0 || destino >= grafo->numeroVertices){
         printf("Local invalido.\n");
@@ -44,8 +46,6 @@ void cadastrarRotaEntreLocais(Grafo* grafo, int origem, int destino, int peso){
  
     printf("Rota cadastrada: %d <-> %d (peso: %d)\n", origem, destino, peso);
 }
-
-// TODO: Implementar o resto das funções declaradas em grafo.h
 
 // Função para exibir a rede de distribuição
 void exibirRedeDistribuicao(Grafo* grafo) {
