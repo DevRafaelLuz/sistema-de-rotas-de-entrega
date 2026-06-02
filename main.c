@@ -38,7 +38,13 @@ void exibirMenu(Grafo* grafo) {
                 exibirRedeDistribuicao(grafo);
                 break;
             case 3:
-                // simularEntregaBFS(grafo, origem, destino);
+                printf("\nDigite o ponto de origem: ");
+                scanf("%d", &origem);
+
+                printf("\nDigite o destino: ");
+                scanf("%d", &destino);
+
+                simularEntregaBFS(grafo, origem, destino);
                 break;
             case 4:
                 // calcularMenorRotaDijkstra(grafo, origem, destino);
