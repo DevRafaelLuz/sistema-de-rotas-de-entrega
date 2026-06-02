@@ -58,12 +58,12 @@ void exibirRedeDistribuicao(Grafo* grafo) {
         return;
     } else {
         for (int i = 0; i < grafo->numeroVertices; i++) {
-            for (int j = 0; j < grafo->numeroVertices; j++) {
+            for (int j = i + 1; j < grafo->numeroVertices; j++) {  // j começa em i+1
                 if (grafo->matrizAdjacencia[i][j] != 0) {
-                    printf("Rota: %d <-> %d (peso: %d)\n", i, j, grafo->matrizAdjacencia[i][j]);
-                }
-            }
+                     printf("Rota: %d <-> %d (peso: %d)\n", i, j, grafo->matrizAdjacencia[i][j]);
         }
+    }
+}
     }
 
     //Mostra a matriz de adjacencia
