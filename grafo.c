@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "grafo.h"
+#include <limits.h>
 
 struct grafo {
     int numeroVertices;
@@ -109,4 +110,67 @@ void simularEntregaBFS(Grafo* grafo, int origem, int destino) {
 
     printf("\nDestino %d nao alcancado!\n", destino);
 }
-// void calcularMenorRotaDijkstra(Grafo* grafo, int origem, int destino) { }
+
+// Função para calcular a menor rota usando Dijkstra
+void calcularMenorRotaDijkstra(Grafo* grafo, int origem, int destino) { 
+    printf("Calculo da menor rota (Dijkstra) entre %d e %d\n", origem, destino);
+    if (origem < 0 || origem >= grafo->numeroVertices || destino < 0 || destino >= grafo->numeroVertices) {
+        printf("Local invalido.\n");
+        return;
+    }
+
+    // Implementar Dijkstra para calcular a menor rota
+    // Para simplicidade, apenas exibiremos os locais visitados durante o cálculo
+    int distancia[grafo->numeroVertices];
+    int visitado[grafo->numeroVertices];
+    for (int i = 0; i < grafo->numeroVertices; i++) {
+        distancia[i] = INT_MAX;
+        visitado[i] = 0;
+    }
+    distancia[origem] = 0;
+
+    for (int i = 0; i < grafo->numeroVertices; i++) {
+        int minDistancia = INT_MAX;
+        int verticeAtual = -1;
+
+        for (int j = 0; j < grafo->numeroVertices; j++) {
+            if (!visitado[j] && distancia[j] < minDistancia) {
+                minDistancia = distancia[j];
+                verticeAtual = j;
+            }
+        }
+
+        if (verticeAtual == -1) {
+            break; // Todos os vértices foram visitados
+        }
+
+        visitado[verticeAtual] = 1;
+
+        for (int j = 0; j < grafo->numeroVertices; j++) {
+            if (grafo->matrizAdjacencia[verticeAtual][j] != 0 && !visitado[j]) {
+                int novaDistancia = distancia[verticeAtual] + grafo->matrizAdjacencia[verticeAtual][j];
+                if (novaDistancia < distancia[j]) {
+                    distancia[j] = novaDistancia;
+                }
+            }
+        }
+    }
+
+    if (distancia[destino] == INT_MAX) {
+        printf("Destino %d nao alcancado!\n", destino);
+    } else {
+        printf("Menor distancia entre %d e %d: %d\n", origem, destino, distancia[destino]);
+        printf("Rota: %d ", destino);
+        int verticeAtual = destino;
+        while (verticeAtual != origem) {
+            for (int j = 0; j < grafo->numeroVertices; j++) {
+                if (grafo->matrizAdjacencia[j][verticeAtual] != 0 && distancia[verticeAtual] == distancia[j] + grafo->matrizAdjacencia[j][verticeAtual]) {
+                    printf("<- %d ", j);
+                    verticeAtual = j;
+                    break;
+                }
+            }
+        }
+        printf("\n");
+    }
+}

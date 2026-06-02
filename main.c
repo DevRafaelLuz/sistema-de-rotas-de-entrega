@@ -47,7 +47,13 @@ void exibirMenu(Grafo* grafo) {
                 simularEntregaBFS(grafo, origem, destino);
                 break;
             case 4:
-                // calcularMenorRotaDijkstra(grafo, origem, destino);
+                printf("\nDigite o ponto de origem: ");
+                scanf("%d", &origem);
+
+                printf("\nDigite o destino: ");
+                scanf("%d", &destino);
+
+                calcularMenorRotaDijkstra(grafo, origem, destino);
                 break;
             case 5:
                 printf("Fechando sistema...\n");
