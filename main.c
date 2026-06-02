@@ -9,15 +9,15 @@
 void exibirMenu(Grafo* grafo) {
     int opcao, origem, destino, peso;;
     do {
-        printf("+-----------------------------------+\n");
+        printf(" ----------------------------------- \n");
         printf("|    Sistema de Rotas de Entrega    |\n");
-        printf("+-----------------------------------+\n");
+        printf(" ----------------------------------- \n");
         printf("| 1. Cadastrar rota entre locais    |\n");
         printf("| 2. Exibir rede de distribuicao    |\n");
         printf("| 3. Simular entrega (BFS)          |\n");
         printf("| 4. Calcular menor rota (Dijkstra) |\n");
         printf("| 5. Sair                           |\n");
-        printf("+-----------------------------------+\n");
+        printf(" ----------------------------------- \n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
 
@@ -65,11 +65,10 @@ void exibirMenu(Grafo* grafo) {
     } while (opcao != 5);
 }
 
+
 int main() {
     Grafo* grafo = criarGrafo(MAX_VERTICES);
-    exibirMenu(grafo); //Chama a função para exibir o menu
-
+    exibirMenu(grafo);
     liberarGrafo(grafo);
-
     return 0;
 }
