@@ -7,7 +7,7 @@
 
 // Função para exibir o menu
 void exibirMenu(Grafo* grafo) {
-    int opcao;
+    int opcao, origem, destino, peso;;
     do {
         printf("+-----------------------------------+\n");
         printf("|    Sistema de Rotas de Entrega    |\n");
@@ -23,12 +23,10 @@ void exibirMenu(Grafo* grafo) {
 
         switch (opcao) {
             case 1:
-                int origem, destino, peso;
-
-                printf("\nDigite o ponto de origem");
+                printf("\nDigite o ponto de origem: ");
                 scanf("%d", &origem);
 
-                printf("\nDigite o destino");
+                printf("\nDigite o destino: ");
                 scanf("%d", &destino);
 
                 printf("\nDigite a distancia(Km): ");
@@ -37,7 +35,7 @@ void exibirMenu(Grafo* grafo) {
                 cadastrarRotaEntreLocais(grafo, origem, destino, peso);
                 break;
             case 2:
-                // exibirRedeDistribuicao(grafo);
+                exibirRedeDistribuicao(grafo);
                 break;
             case 3:
                 // simularEntregaBFS(grafo, origem, destino);
